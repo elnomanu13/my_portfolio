@@ -1,149 +1,145 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-.section
-{
-  height: 30vh;
-  border: 1px solid black;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body
-{
+body {
   background: linear-gradient(180deg, #1a202c 0%, #0f1419 100%);
   color: black;
+  overflow-x: hidden;
 }
 
-/* Section navigation */
+/* ========== SECTION NAVIGATION & HEADER ========== */
 
-.background
-{
-    min-width: 80vw;
-    height: max-content;
-    background-color: #000000;
-    color: #fff;
-    background: url(/assets/back6.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.background {
+  min-width: 100%;
+  height: max-content;
+  color: #fff;
+  background-color: #81C3d7;
+  background: url(/assets/back6.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-
-/* Section header et navigation */
-header
-{
-    padding: 1rem 2rem;
-    font-size: 1rem;
+header {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background: rgba(26, 32, 44, 0.8);
 }
 
-.nav
-{
-    display: flex;
-    gap: 2rem;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 80vw;
-    margin: 0 auto;
+.nav {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.nav-menu
-{
-    display: flex;
-    gap: 2rem;
-    list-style: none;
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #6c63ff;
+  white-space: nowrap;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
 }
 
 .nav-menu a {
   text-decoration: none;
   color: #fff;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 .nav-menu a:hover {
   color: #6c63ff;
 }
 
-.cv
-{
-    font-size: 1rem;
-  color: white;
-  font-weight: bold;
-  background: #16425b;
+/* Bouton toggle mobile (caché par défaut) */
+.nav-toggle {
+  display: none;
+  background: none;
   border: none;
-  border-radius: 16px;
-  padding:  0.4rem;
-  width: max-content;
-  text-align: center;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
+/* ========== SECTION HERO ========== */
 
-/* Section Hero */
 .hero {
-  min-height: 50vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 3rem 2rem;
   gap: 3rem;
 }
 
-.hero-content
-{
-    flex: 2;
-  animation: fadeInUp 3s ease-out;
+.hero-content {
+  flex: 2;
+  animation: fadeInUp 1.5s ease-out;
 }
 
-
 .hero-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 6vw, 4rem);
   font-weight: 700;
   color: #2F6690;
   line-height: 1.1;
+  margin-bottom: 1rem;
 }
-
 
 .hero-subtitle {
   font-size: 1rem;
   color: white;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   background: #16425b;
-  border: none;
   border-radius: 16px;
-  padding:  0.4rem;
+  padding: 0.4rem 0.8rem;
   width: max-content;
   text-align: center;
 }
 
-.hero-content h2
-{
-    margin-bottom: 2rem;
+.hero-content h2 {
+  margin-bottom: 2rem;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  line-height: 1.6;
 }
 
-.cta
-{
-  font-size: 1.5rem;
+.cta {
+  display: inline-block;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   color: rgb(0, 0, 0);
   font-weight: bold;
   background: #81C3d7;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
-  padding:  0.6rem;
-  width: max-content;
+  padding: 0.8rem 1.5rem;
   text-align: center;
-  margin: 5rem 3rem 5rem 5rem;
+  margin: 1rem 1rem 1rem 0;
   text-decoration: none;
-  transition: background 0.6s ;
+  transition: background 0.6s;
 }
 
-.cta:hover
-{
-    background: #16425b;
-    color: #fff;
-
+.cta:hover {
+  background: #16425b;
+  color: #fff;
 }
 
-/* Carte de musique */
+/* ========== CARTE DE MUSIQUE ========== */
+
 .music-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -151,17 +147,17 @@ header
   border-radius: 16px;
   padding: 1.5rem;
   flex: 1;
-  margin-top: 2rem;
+  min-width: 280px;
+  max-width: 400px;
 }
 
 .music-card h2 {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1rem;
   font-weight: 500;
 }
 
-/* Cover et bouton superposé */
 .music-cover {
   position: relative;
   margin-bottom: 1rem;
@@ -171,7 +167,7 @@ header
 
 .music-cover img {
   width: 100%;
-  height: 10%;
+  height: auto;
   display: block;
   transition: transform 0.3s;
 }
@@ -180,7 +176,6 @@ header
   transform: scale(1.05);
 }
 
-/* Bouton play au centre de l'image */
 #playBtn {
   position: absolute;
   top: 50%;
@@ -209,7 +204,6 @@ header
   font-size: 1.2rem;
 }
 
-/* Infos musique */
 .music-info {
   display: flex;
   flex-direction: column;
@@ -217,12 +211,11 @@ header
 }
 
 .music-name {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   color: #fff;
   font-weight: 600;
 }
 
-/* Contrôles (timers + barre) */
 .music-controls {
   display: flex;
   align-items: center;
@@ -231,7 +224,6 @@ header
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Barre de progression */
 .music-bar {
   flex: 1;
   height: 6px;
@@ -244,63 +236,69 @@ header
 
 .music-progress {
   height: 100%;
-  width: 0%; /* mis à jour par JS */
+  width: 0%;
   background: linear-gradient(90deg, #6c63ff, #5a52d5);
   border-radius: 3px;
   transition: width 0.1s linear;
 }
 
-/* barre de langages */
+/* ========== BARRE DE LANGAGES ========== */
 
-.langages
-{
-  height: 20vh;
+.langages {
+  min-height: 15vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-around;
   background-color: #2F6690;
+  margin: 6rem;
+  padding: 2rem 1rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
-.icon
-{
-  height: 32px;
-  width: 32px;
+.icon {
+  height: 48px;
+  width: 48px;
+  transition: transform 0.3s;
 }
 
-.icon img
-{
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.icon img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-/* Section about  */
-.about
-{
-  height: max-content;
+/* ========== SECTION ABOUT ========== */
 
-  padding: 4rem ;
+.about {
+  padding: 4rem 2rem;
 }
 
-.about-container
-{
+.about-container {
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 4rem;
   align-items: center;
-
 }
 
-.about-image
-{
+.about-image {
   width: 100%;
-  max-width: 80vw;
-  height: 80vh;
+  max-width: 500px;
+  height: auto;
+  justify-self: center;
 }
 
-.about-image img
-{
+.about-image img {
   width: 100%;
   height: 100%;
+  max-height: 600px;
   object-fit: cover;
   border-radius: 16px;
   transition: transform 0.3s;
@@ -310,47 +308,46 @@ header
   transform: translateY(-8px);
 }
 
-
-.about-content
-{
+.about-content {
   background: #D9DCD6;
-  padding: 1rem 2rem;
+  padding: 2rem;
   color: #000000;
   border-radius: 12px;
 }
 
-
-.about-titre
-{
+.about-titre {
   color: #16425B;
   font-weight: 700;
-   font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   letter-spacing: 0.05em;
+  margin-bottom: 1rem;
 }
 
 .about-text {
-  font-size: 1.1rem;
-  line-height: 1.2;
-  max-width: 600px;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
 }
-
-
 
 .about-buttons {
-  padding: 1rem;
+  padding: 1rem 0;
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
+.about-buttons .icon {
+  height: 40px;
+  width: 40px;
+}
 
-/* Debut sections Projets */
+/* ========== SECTION PROJETS ========== */
 
 .portfolio {
   padding: 6rem 2rem;
-  background: #1a202c; /* fond sombre comme le hero */
+  background: #1a202c;
   color: #fff;
 }
 
@@ -360,13 +357,12 @@ header
 }
 
 .portfolio-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
   letter-spacing: 0.05em;
 }
-
 
 .portfolio-filters {
   display: flex;
@@ -386,6 +382,7 @@ header
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
+  white-space: nowrap;
 }
 
 .filter-btn:hover {
@@ -400,7 +397,6 @@ header
   box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
 }
 
-
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -410,7 +406,7 @@ header
 .project-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 2rem;
   align-items: center;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -425,15 +421,13 @@ header
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Layout inversé (image à gauche) */
 .project-card.reverse {
   grid-template-columns: 1fr 1fr;
 }
 
 .project-card.reverse .project-image {
-  order: -1; /* Pour que le bloc de mon image passe en premier */
+  order: -1;
 }
-
 
 .project-info {
   display: flex;
@@ -442,13 +436,13 @@ header
 }
 
 .project-name {
-  font-size: 1.75rem;
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
   font-weight: 700;
   color: #fff;
 }
 
 .project-description {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -465,7 +459,7 @@ header
 }
 
 .project-link:hover {
-  gap: 1rem; /* flèche se déplace à droite */
+  gap: 1rem;
 }
 
 .project-image {
@@ -485,22 +479,20 @@ header
   transform: scale(1.05);
 }
 
-/* Overlay au hover (optionnel) */
 .project-image::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(108, 99, 255, 0.3) 100%
-  );
+  background: linear-gradient(180deg, transparent 0%, rgba(108, 99, 255, 0.3) 100%);
   opacity: 0;
   transition: opacity 0.4s;
 }
 
+.project-card:hover .project-image::after {
+  opacity: 1;
+}
 
-/* Section Parcours */
+/* ========== SECTION PARCOURS ========== */
 
 .journey {
   padding: 6rem 2rem;
@@ -509,7 +501,6 @@ header
   overflow: hidden;
 }
 
-/* Effet de particules en background (optionnel) */
 .journey::before {
   content: '';
   position: absolute;
@@ -528,7 +519,7 @@ header
 }
 
 .journey-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   text-align: center;
   color: #fff;
@@ -538,7 +529,7 @@ header
 
 .journey-subtitle {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   color: rgba(255, 255, 255, 0.6);
   max-width: 700px;
   margin: 0 auto 4rem;
@@ -550,7 +541,6 @@ header
   padding: 2rem 0;
 }
 
-/* Ligne centrale verticale */
 .timeline::before {
   content: '';
   position: absolute;
@@ -558,16 +548,9 @@ header
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(108, 99, 255, 0.5) 20%,
-    rgba(108, 99, 255, 0.5) 80%,
-    transparent 100%
-  );
+  background: linear-gradient(180deg, transparent 0%, rgba(108, 99, 255, 0.5) 20%, rgba(108, 99, 255, 0.5) 80%, transparent 100%);
   transform: translateX(-50%);
 }
-
 
 .timeline-card {
   position: relative;
@@ -583,17 +566,11 @@ header
   transition: all 0.4s;
 }
 
-/* Effet de glow au hover */
 .timeline-card::before {
   content: '';
   position: absolute;
   inset: -2px;
-  background: linear-gradient(
-    135deg,
-    rgba(108, 99, 255, 0.4),
-    rgba(99, 102, 241, 0.2),
-    transparent
-  );
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.4), rgba(99, 102, 241, 0.2), transparent);
   border-radius: 16px;
   opacity: 0;
   transition: opacity 0.4s;
@@ -607,12 +584,9 @@ header
 .timeline-card:hover {
   background: rgba(255, 255, 255, 0.05);
   transform: translateX(10px);
-  box-shadow:
-    0 20px 60px rgba(108, 99, 255, 0.2),
-    0 0 80px rgba(108, 99, 255, 0.1) inset;
+  box-shadow: 0 20px 60px rgba(108, 99, 255, 0.2), 0 0 80px rgba(108, 99, 255, 0.1) inset;
 }
 
-/* Alternance gauche/droite (optionnel) */
 .timeline-card:nth-child(even) {
   margin-left: auto;
   width: 90%;
@@ -636,7 +610,6 @@ header
   flex-shrink: 0;
 }
 
-
 .card-content {
   display: flex;
   flex-direction: column;
@@ -658,7 +631,7 @@ header
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: 700;
   color: #fff;
   line-height: 1.3;
@@ -671,7 +644,7 @@ header
 }
 
 .card-description {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -699,7 +672,6 @@ header
   font-weight: 700;
 }
 
-
 .tech-evolution {
   display: flex;
   align-items: center;
@@ -710,7 +682,7 @@ header
 
 .tech-phase {
   flex: 1;
-  min-width: 200px;
+  min-width: 180px;
 }
 
 .phase-label {
@@ -750,10 +722,9 @@ header
   flex-shrink: 0;
 }
 
-
 .methodology {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
 }
@@ -795,7 +766,6 @@ header
   text-align: center;
 }
 
-
 .journey-cta {
   text-align: center;
   margin-top: 3rem;
@@ -820,8 +790,7 @@ header
   box-shadow: 0 12px 32px rgba(108, 99, 255, 0.4);
 }
 
-
-/* Debut section contact */
+/* ========== SECTION CONTACT ========== */
 
 .contact {
   padding: 6rem 2rem;
@@ -834,7 +803,7 @@ header
 }
 
 .contact-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   text-align: center;
   color: #fff;
@@ -844,7 +813,7 @@ header
 
 .contact-subtitle {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   color: rgba(255, 255, 255, 0.6);
   max-width: 600px;
   margin: 0 auto 4rem;
@@ -858,7 +827,6 @@ header
   align-items: start;
 }
 
-
 .contact-form-wrapper {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
@@ -868,7 +836,7 @@ header
 }
 
 .form-heading {
-  font-size: 1.75rem;
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
   font-weight: 700;
   color: #fff;
   margin-bottom: 1.5rem;
@@ -981,7 +949,7 @@ header
 }
 
 .info-heading {
-  font-size: 1.75rem;
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
   font-weight: 700;
   color: #fff;
   margin-bottom: 0.5rem;
@@ -1015,7 +983,7 @@ header
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #6c63ff, #5a52d5);
+  background: white;
   border-radius: 10px;
   font-size: 1.5rem;
   flex-shrink: 0;
@@ -1051,6 +1019,7 @@ a.info-value:hover {
   margin-top: 2rem;
   border-radius: 12px;
   overflow: hidden;
+  color: white;
 }
 
 .contact-visual img {
@@ -1058,6 +1027,8 @@ a.info-value:hover {
   height: auto;
   display: block;
 }
+
+/* ========== FOOTER ========== */
 
 .footer {
   background: #0a0e14;
@@ -1102,6 +1073,7 @@ a.info-value:hover {
 .footer-socials {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .social-link {
@@ -1138,15 +1110,437 @@ a.info-value:hover {
   font-weight: 600;
 }
 
+/* ========== ANIMATIONS ========== */
 
-/* ANIMATIONS */
-@keyframes progress {
-  from { width: 0%; }
-  to { width: 100%; }
+
+/* ========================================
+   ANIMATIONS COMPLÉMENTAIRES
+   ======================================== */
+
+/* ========== DÉFILEMENT INFINI DES LANGAGES ========== */
+
+.langages {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex !important;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+/* Wrapper pour le défilement */
+.langages::before,
+.langages::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.langages::before {
+  left: 0;
+  background: linear-gradient(to right, #2F6690 0%, transparent 100%);
+}
+
+.langages::after {
+  right: 0;
+  background: linear-gradient(to left, #2F6690 0%, transparent 100%);
+}
+
+
+/* ========== ANIMATIONS AU SCROLL ========== */
+
+/* About Section */
+.about-image,
+.about-content {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-image.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+/* Project Cards */
+.project-card {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Timeline Cards */
+.timeline-card {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-card:nth-child(even).visible {
+  animation: slideInRight 0.7s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Contact Section */
+.contact-form-wrapper,
+.contact-info-wrapper {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-form-wrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-info-wrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+
+/* ========== EFFET PULSE SUR LES BOUTONS CTA ========== */
+
+.cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.cta:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+
+/* ========== GLOW EFFECT SUR LES CARDS AU HOVER ========== */
+
+.project-card,
+.timeline-card,
+.info-item {
+  position: relative;
+}
+
+.project-card::after,
+.timeline-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  box-shadow: 0 0 30px rgba(108, 99, 255, 0.5);
+}
+
+.project-card:hover::after,
+.timeline-card:hover::after {
+  opacity: 1;
+}
+
+
+/* ========== ANIMATION DES ICÔNES SOCIALES ========== */
+
+.about-buttons .icon,
+.social-link {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-buttons .icon:hover,
+.social-link:hover {
+  transform: translateY(-5px) rotate(5deg);
+}
+
+.about-buttons .icon:active,
+.social-link:active {
+  transform: scale(0.95);
+}
+
+
+/* ========== EFFET DE TEXTE GRADIENT ANIMÉ ========== */
+
+.hero-title {
+  background: linear-gradient(
+    90deg,
+    #2F6690 0%,
+    #16425b 25%,
+    #2F6690 50%,
+    #16425b 75%,
+    #2F6690 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+/* ========== SCROLL PROGRESS BAR ========== */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #6c63ff, #5a52d5);
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+
+
+/* ========== LOADING SKELETON (optionnel) ========== */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
+/* ========== EFFET GLASSMORPHISM AMÉLIORÉ ========== */
+
+.music-card,
+.contact-form-wrapper,
+.contact-info-wrapper,
+.timeline-card {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 
 
+/* ========== BOUTON RETOUR EN HAUT - STYLES ADDITIONNELS ========== */
+
+.scroll-to-top:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 6px 25px rgba(108, 99, 255, 0.5) !important;
+}
+
+.scroll-to-top:active {
+  transform: translateY(-2px) scale(0.95) !important;
+}
+
+
+/* ========== AMÉLIORATION DES TRANSITIONS ========== */
+
+a, button, input, textarea, select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ========== EFFET TYPING SUR LE HERO (optionnel) ========== */
+
+.hero-subtitle.typing {
+  overflow: hidden;
+  border-right: 2px solid #6c63ff;
+  white-space: nowrap;
+  animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+  width: 0;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #6c63ff;
+  }
+}
+
+
+/* ========== EFFET REVEAL TEXT (optionnel) ========== */
+
+.reveal-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #6c63ff;
+  transform: translateX(-100%);
+  animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes reveal {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+/* ========== SMOOTH SCROLLBAR (pour navigateurs webkit) ========== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a202c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6c63ff, #5a52d5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7c73ff, #6a62e5);
+}
+
+
+/* ========== AMÉLIORATION DES FOCUS STATES ========== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #6c63ff;
+  outline-offset: 4px;
+  animation: pulse-focus 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-focus {
+  0%, 100% {
+    outline-color: #6c63ff;
+  }
+  50% {
+    outline-color: #a5b4fc;
+  }
+}
+
+
+/* ========== RESPONSIVE - DÉSACTIVATION ANIMATIONS COMPLEXES ========== */
+
+@media (max-width: 768px) {
+  /* Simplifier les animations sur mobile */
+  .hero-title {
+    animation: none;
+    background: #2F6690;
+    -webkit-text-fill-color: #2F6690;
+  }
+
+  /* Désactiver le parallax sur mobile */
+  .hero {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+
+/* ========== PRÉFÉRENCE POUR MOUVEMENT RÉDUIT ========== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .langages {
+    animation: none;
+  }
+}
 
 @keyframes fadeInUp {
   from {
@@ -1159,230 +1553,509 @@ a.info-value:hover {
   }
 }
 
-
 @keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .music-cover img.playing {
   animation: rotate 20s linear infinite;
-  border-radius: 50%; /* effet vinyle */
+  border-radius: 50%;
 }
 
-
-
-/* ------------------------------
-  RESPONSIVE ADAPTIVE LAYER
-  (COLLER EN BAS DE page.css)
-  Cette couche ajuste tailles, paddings & marges
-  sans remplacer ton esthétique.
----------------------------------*/
-
-/* Variables fluides (tu peux ajuster si besoin) */
-:root{
-  --scale-mobile: 0.90;
-  --scale-tablet: 0.96;
-  --max-content-width: 1200px;
-  --gutter: 1rem;
-  --hero-cta-gap: 1rem;
-}
-
-/* Make containers fluid and avoid horizontal scroll */
-*{ box-sizing: border-box; }
-html,body { width:100%; }
-
-/* Fix potentiels débordements */
-
-
-/* Improve nav items spacing & prevent wrap issues */
-.nav { gap: 1rem; align-items:center; }
-.nav-logo { flex-shrink: 0; }
-.nav-menu { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
-
-/* Make download button consistent */
-.btn-download { white-space:nowrap; padding: 0.8rem 1rem; }
-
-/* HERO tweaks (baseline, will be scaled in media queries) */
-.hero { gap: 2rem; align-items:center; }
-
-/* Fix music cover height issue so it scales nicely */
-.music-cover img { width:100%; height:auto; display:block; }
-
-/* Ensure about image doesn't produce huge height on small screens */
-.about-image { max-height: 60vh; overflow: hidden; }
-.about-image img { object-fit: cover; }
-
-/* Projects grid: smooth behavior */
-.projects-grid { grid-auto-rows: auto; }
-
-/* Make timeline cards flexible */
-.timeline-card { width: 100%; box-sizing: border-box; }
-
-/* Use fluid typography where possible */
-.hero-title {
-  font-size: clamp(1.8rem, 4vw, 3.2rem); /* responsive base */
-  line-height: 1.05;
-}
-
-.portfolio-title, .journey-title, .contact-title, .about-titre {
-  font-size: clamp(1.6rem, 3.2vw, 3rem);
-}
-
-/* Buttons: scale consistently */
-.cta, .btn-download, .btn-submit {
-  padding: clamp(0.5rem, 1.2vw, 0.9rem) clamp(0.8rem, 2vw, 1.6rem);
-  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
-  border-radius: 12px;
-}
-
-/* Nav links smaller on small widths to avoid overflow */
-.nav-menu a {
-  font-size: clamp(0.85rem, 1.2vw, 1rem);
-  padding: 0.25rem 0.4rem;
-}
-
-/* CTA specific spacing */
-.hero-content .cta { margin: 1rem 0.5rem; display:inline-block; }
-
-/* ---------------------------------------------------
-   MOBILE (very small screens) adjustments
-   target: phones <= 600px
-   We'll reduce fonts, paddings and stack layout.
-   ---------------------------------------------------*/
-@media (max-width: 600px) {
-
-  :root { --scale: var(--scale-mobile); }
-
-  /* NAV */
-  .nav { flex-direction: row; justify-content: space-between; gap: 0.5rem; padding: 0.5rem 0; }
-  .nav-menu { display: none; position: absolute; top: 60px; left: 0; right: 0; background: rgba(0,0,0,0.6); padding: 1rem; flex-direction: column; gap: 0.6rem; border-radius: 0 0 12px 12px; z-index: 1500;}
-  .nav-menu.active { display: flex; }
-  .nav-toggle { display: block; background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; }
-
-  /* Ensure logo doesn't shrink too much */
-  .nav-logo { font-size: 0.95rem; }
-
-  /* HERO */
-  .hero { flex-direction: column; align-items: center; text-align: center; padding: 1.4rem; gap: 1rem; }
-  .hero-content { padding: 0; }
-  .hero-title { font-size: clamp(1.6rem, 6vw, 2.3rem); line-height: 1.05; }
-  .hero-subtitle { font-size: 0.85rem; padding: 0.25rem 0.5rem; }
-
-  .hero-content h2 { font-size: 0.95rem; margin: 0.5rem 0 1rem; line-height:1.4; }
-
-  /* CTA: full width optionally */
-  .hero-content .cta { display: block; width: 100%; box-sizing: border-box; text-align:center; margin: 0.5rem 0; }
-
-  /* music card become full width and sit under hero */
-  .music-card { width: 100%; margin-top: 0.8rem; padding: 1rem; }
-
-  /* LANGAGES icons smaller and wrap */
-  .langages { height: auto; padding: 1rem 0.5rem; gap: 1rem; justify-content:center; flex-wrap:wrap; }
-  .icon { width: 40px; height: 40px; }
-
-  /* ABOUT: stack columns */
-  .about-container { display: grid; grid-template-columns: 1fr; gap: 1.2rem; padding: 1.2rem; }
-  .about-image { height: 44vw; max-height: 320px; }
-  .about-content { padding: 1rem; }
-
-  .about-titre { font-size: 1.4rem; }
-
-  /* PROJECTS: single column */
-  .projects-grid { grid-template-columns: 1fr; gap: 1.2rem; padding-bottom: 2rem; }
-  .project-card { grid-template-columns: 1fr; padding: 1rem; gap: 1rem; }
-  .project-card.reverse .project-image { order: -1; }
-
-  .project-name { font-size: 1.15rem; }
-  .project-description { font-size: 0.95rem; }
-
-  /* TIMELINE: stack */
-  .timeline { padding: 0.5rem 0; }
-  .timeline-card { grid-template-columns: 60px 1fr; padding: 1rem; margin-bottom: 1rem; }
-  .card-title { font-size: 1.05rem; }
-
-  /* CONTACT */
-  .contact-content { display: block; }
-  .contact-form-wrapper, .contact-info-wrapper { width: 100%; padding: 1rem; margin-bottom: 1rem; }
-
-  /* FOOTER */
-  .footer-content { flex-direction: column; gap: 1rem; text-align:center; }
-}
-
-/* ---------------------------------------------------
-   TABLET adjustments (between 601px and 1024px)
-   We'll reduce some sizes and use 2-column grids.
-   ---------------------------------------------------*/
-@media (min-width: 601px) and (max-width: 1024px) {
-
-  :root { --scale: var(--scale-tablet); }
-
-  /* NAV */
-  .nav { padding: 0.8rem 1rem; }
-  .nav-menu { display:flex; gap:0.8rem; flex-wrap:wrap; }
-  .nav-toggle { display: none; }
-
-  /* HERO */
-  .hero { flex-direction: row; gap: 1.6rem; padding: 2rem 1rem; align-items: center; }
-  .hero-title { font-size: clamp(2rem, 3.6vw, 3rem); }
-  .hero-content h2 { font-size: 1rem; }
-
-  .hero-content .cta { display:inline-block; margin: 0.6rem 0.4rem; padding: 0.6rem 1rem; }
-
-  /* MUSIC CARD size */
-  .music-card { max-width: 360px; flex: 0 0 35%; margin-top: 0; }
-
-  /* ABOUT layout: keep 1fr 1.2fr but smaller gap */
-  .about-container { grid-template-columns: 1fr 1.2fr; gap: 1.4rem; padding: 2rem; }
-  .about-image { max-height: 50vh; }
-
-  /* PROJECTS: 2 columns */
-  .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-
-  .project-card { grid-template-columns: 1fr; } /* stack inside each card */
-  .project-image { height: auto; }
-
-  /* TIMELINE: 2 columns feel better */
-  .timeline { padding: 1rem 0; }
-  .timeline-card { display: grid; grid-template-columns: 70px 1fr; padding: 1.2rem; margin-bottom: 1.25rem; }
-
-  /* CONTACT */
-  .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .contact-form-wrapper, .contact-info-wrapper { padding: 1.5rem; }
-}
-
-/* ---------------------------------------------------
-   DESKTOP tweaks (>= 1025px)
-   On large screens we keep your defaults but fix widths
-   ---------------------------------------------------*/
-@media (min-width: 1025px) {
-
-  .nav-menu { display:flex; }
-  .nav-toggle { display: none; }
-
-  .hero { padding: 3rem 1rem; gap: 3rem; align-items: center; }
-  .music-card { margin-top: 2rem; }
-
-  .about-container { grid-template-columns: 1fr 1.5fr; gap: 3rem; }
-  .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
-
-  .timeline { padding: 2rem 0; }
-
-  .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-}
-
-/* Small utility: avoid very long lines for text blocks on large screens */
-.about-text, .project-description, .journey-subtitle, .contact-subtitle {
-  max-width: 60ch;
-}
-
-/* Accessibility: larger tap targets on small screens */
-@media (max-width: 600px) {
-  .filter-btn, .project-link, .btn-download, .cta, .nav-menu a {
-    min-height: 44px;
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
   }
 }
 
-/* End of responsive adaptive layer */
+/* ========================================
+   MEDIA QUERIES - RESPONSIVE
+   ======================================== */
+
+/* ========== TABLETTE (max-width: 1024px) ========== */
+
+@media (max-width: 1024px) {
+  /* Navigation */
+  .nav {
+    gap: 1rem;
+  }
+
+  .nav-menu {
+    gap: 1rem;
+  }
+
+  .nav-menu a {
+    font-size: 0.9rem;
+  }
+
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .hero-content h2 {
+    text-align: center;
+  }
+
+  .cta {
+    margin: 0.5rem;
+  }
+
+  .music-card {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  /* About */
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .about-image {
+    max-width: 400px;
+  }
+
+  .about-buttons {
+    justify-content: center;
+  }
+
+  /* Projets */
+  .project-card,
+  .project-card.reverse {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card.reverse .project-image {
+    order: 0;
+  }
+
+  /* Timeline */
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-card:nth-child(even),
+  .timeline-card:nth-child(odd) {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .timeline-card {
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+  }
+
+  .card-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.7rem;
+  }
+
+  /* Contact */
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* Footer */
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-brand {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+}
+
+/* ========== MOBILE PAYSAGE (max-width: 768px) ========== */
+
+@media (max-width: 768px) {
+  /* Header sticky plus compact */
+  header {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Navigation - Menu caché, toggle visible */
+  .nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(26, 32, 44, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Langages - 4 par ligne */
+  .langages {
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .icon {
+    height: 40px;
+    width: 40px;
+  }
+
+  /* About */
+  .about {
+    padding: 3rem 1.5rem;
+  }
+
+  .about-content {
+    padding: 1.5rem;
+  }
+
+  .about-buttons .icon {
+    height: 36px;
+    width: 36px;
+  }
+
+  /* Portfolio */
+  .portfolio {
+    padding: 4rem 1.5rem;
+  }
+
+  .portfolio-filters {
+    gap: 0.75rem;
+  }
+
+  .filter-btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  /* Journey */
+  .journey {
+    padding: 4rem 1.5rem;
+  }
+
+  .tech-evolution {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tech-arrow {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+
+  .methodology {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Contact */
+  .contact {
+    padding: 4rem 1.5rem;
+  }
+
+  .contact-form-wrapper {
+    padding: 2rem;
+  }
+
+  .info-item {
+    padding: 1rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 2rem 1.5rem 1rem;
+  }
+}
+
+/* ========== MOBILE PORTRAIT (max-width: 640px) ========== */
+
+@media (max-width: 640px) {
+  /* Navigation */
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+  }
+
+  .btn-download {
+    font-size: 0.85rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .hero-content h2 {
+    font-size: 0.9rem;
+  }
+
+  .cta {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .music-card {
+    padding: 1.25rem;
+  }
+
+  .music-card h2 {
+    font-size: 1rem;
+  }
+
+  /* Langages - 3 par ligne */
+  .langages {
+    justify-content: center;
+  }
+
+  .icon {
+    height: 36px;
+    width: 36px;
+  }
+
+  /* About */
+  .about {
+    padding: 2.5rem 1rem;
+  }
+
+  .about-image {
+    max-width: 100%;
+  }
+
+  .about-content {
+    padding: 1.25rem;
+  }
+
+  .about-buttons {
+    gap: 1rem;
+  }
+
+  /* Portfolio */
+  .portfolio {
+    padding: 3rem 1rem;
+  }
+
+  .projects-grid {
+    gap: 2rem;
+  }
+
+  .project-card {
+    padding: 1.25rem;
+  }
+
+  /* Journey */
+  .journey {
+    padding: 3rem 1rem;
+  }
+
+  .timeline {
+    padding: 1rem 0;
+  }
+
+  .timeline-card {
+    grid-template-columns: 50px 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .methodology {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact */
+  .contact {
+    padding: 3rem 1rem;
+  }
+
+  .contact-form-wrapper,
+  .contact-info-wrapper {
+    padding: 1.5rem;
+  }
+
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .info-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Footer */
+  .footer-logo {
+    font-size: 1.5rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+}
+
+/* ========== TRÈS PETIT MOBILE (max-width: 375px) ========== */
+
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .portfolio-title,
+  .journey-title,
+  .contact-title {
+    font-size: 1.75rem;
+  }
+
+  .langages {
+    justify-content: space-around;
+  }
+
+  .icon {
+    height: 32px;
+    width: 32px;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .project-name {
+    font-size: 1.2rem;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .methodology {
+    gap: 0.75rem;
+  }
+
+  .method-step {
+    padding: 0.75rem;
+  }
+
+  .step-number {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .step-name {
+    font-size: 0.8rem;
+  }
+}
+
+/* ========== DESKTOP LARGE (min-width: 1440px) ========== */
+
+@media (min-width: 1440px) {
+  .nav,
+  .portfolio-container,
+  .contact-container,
+  .footer-container {
+    max-width: 1600px;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+  }
+
+  .about-container {
+    max-width: 1600px;
+  }
+
+  .journey-container {
+    max-width: 1200px;
+  }
+}
+
+/* ========== ACCESSIBILITÉ & FOCUS ========== */
+
+*:focus-visible {
+  outline: 3px solid #6c63ff;
+  outline-offset: 4px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #6c63ff;
+  outline-offset: 4px;
+}
+
+/* Réduire les animations pour ceux qui préfèrent */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
