@@ -1,0 +1,188 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: #b9d6f2
+}
+header
+{
+    background: url(/assets/back2.webp) ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+.header
+{
+    background-color: beige;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.navbar
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.navbar ul
+{
+    display: flex;
+    list-style: none;
+    gap: 12px;
+}
+
+.navbar ul li
+{
+    padding: 8px;
+    font-size: 1.2rem;
+}
+
+.navbar ul a
+{
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.8s ease;
+}
+
+.navbar ul li a:hover
+{
+    font-weight: bold;
+    background: #006DAA;
+    padding: 8px;
+    border-radius: 8px;
+    transform: translateX(-12px);
+
+}
+
+.btn-cta
+{
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+    border-radius: 24px;
+    width: 10rem;
+    max-width: max-content;
+    font-weight: bold;
+    background-color: #0353A4;
+    text-align: center;
+}
+
+
+/* Debut style section hero */
+
+.about-me
+{
+    height: 30vh;
+    background-color: #0353A4;
+}
+
+.skills
+{
+    height: 30vh;
+    background-color: #006DAA;
+}
+
+.projets
+{
+    height: 30vh;
+    background-color: #0353A4;
+}
+
+
+.container
+{
+    background-color: #006DAA;
+    background: transparent;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+
+}
+
+.hero-text
+{
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+
+.alias
+{
+    background-color: #061A40;
+    color: white;
+    padding: 0.2rem;
+    max-width: max-content;
+}
+
+.social
+{
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.icon
+{
+    width: 32px;
+    height: 32px;
+}
+
+
+.hero-music
+{
+  width: 300px;
+  padding: 8px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.music-img img
+{
+    border-radius: 12px;
+    width: 100%;
+}
+
+.music-img
+{
+    width: 50%;
+    text-align: center;
+
+}
+
+.hero-music button
+{
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    background: #0353A4;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+
+}

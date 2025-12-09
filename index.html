@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="page.css" />
+    <title>Mon-Portfolio</title>
+  </head>
+  <body>
+    <div class="background" id="home">
+      <header class="header">
+        <nav class="nav">
+          <div class="nav-logo">@elnomanu13</div>
+          <ul class="nav-menu">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#about">A-Propos</a></li>
+            <li><a href="#portfolio">Projets</a></li>
+            <li><a href="#parcours">Parcours/Expérience/Formation</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <a href="./assets/cv.pdf" class="btn-download">📄 Télécharger mon CV</a>
+          <button class="nav-toggle" aria-label="Menu mobile">☰</button>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="hero-content">
+          <p class="hero-subtitle">elnomanu13</p>
+          <h1 class="hero-title">FULL STACK<br />SOFTWARE<br />DEVELOPER.</h1>
+          <h2>
+            Je suis Emmnuanuel Nono K KOWOUVI, <br />Alias elnomanu13, passionné
+            du code, de l'innovation <br />
+            et l'importance du numérique dans notre société actuelle
+          </h2>
+          <a class="btn-download cta" href="#">Mon CV</a>
+          <a class="btn-download cta" href="#">Mes projets</a>
+        </div>
+
+        <aside class="music-card">
+          <h2>Écoutez une bonne musique en scrollant mon Portfolio</h2>
+          <div class="music-cover">
+            <img src="/assets/music-play1.jpg" alt="Rihanna album cover" />
+            <button id="playBtn" aria-label="Play/Pause music">
+              <span class="icon">▶</span>
+            </button>
+          </div>
+
+          <div class="music-info">
+            <span class="music-name">lift me up - Rihanna</span>
+            <div class="music-controls">
+              <span class="time-current">0:00</span>
+              <div class="music-bar">
+                <div class="music-progress" id="progress"></div>
+              </div>
+              <span class="time-total">0:00</span>
+            </div>
+          </div>
+
+          <audio id="music" preload="metadata">
+            <source src="/assets/rihana.mp3" type="audio/mpeg" />
+            Votre navigateur ne supporte pas l'audio HTML5.
+          </audio>
+        </aside>
+      </section>
+    </div>
+    <!-- Fin header -->
+
+    <!-- Debut de la section de barre de navigation des langages -->
+    <section class="langages" id="skills">
+      <div class="icon"><img src="/assets/html.png" alt="icone HTML5" /></div>
+      <div class="icon"><img src="/assets/css.png" alt="icone CSS3" /></div>
+      <div class="icon">
+        <img src="/assets/java-script.png" alt="icone Javascript" />
+      </div>
+      <div class="icon"><img src="/assets/php.png" alt="icone Php" /></div>
+      <div class="icon">
+        <img src="/assets/python.png" alt="icone Python" />
+      </div>
+      <div class="icon"><img src="/assets/react.png" alt="icone react" /></div>
+      <div class="icon"><img src="/assets/figma.png" alt="icone Figma" /></div>
+      <div class="icon">
+        <img src="/assets/github.png" alt="icone Github" />
+      </div>
+    </section>
+
+    <!-- Debut section  about -->
+    <section class="about" id="about">
+      <div class="about-container">
+        <figure class="about-image">
+          <img src="/assets/profil3.jpeg" alt="image de moi" />
+        </figure>
+        <div class="about-content">
+          <h2 class="about-titre">A Propos de Moi</h2>
+          <p class="about-text">
+            Je suis un développeur web et mobile passionné par la création
+            d’outils utiles et bien pensés. Après un BTS en développement
+            d’applications au Togo, j’ai travaillé sur différents projets
+            concrets : gestion de stocks, plateformes de formation,
+            automatisation de prospection et conception d’applications centrées
+            sur l’expérience utilisateur. J’aime apprendre en continu, analyser
+            les problèmes avec rigueur et construire des solutions propres,
+            modernes et évolutives. En ce moment, je renforce mes compétences en
+            React, en Django et en intégration UI/UX, tout en développant des
+            projets personnels et professionnels qui me permettent d’affiner ma
+            méthode de travail. <br />Je vise des solutions simples,
+            fonctionnelles et utiles ,le type de projets qui facilitent
+            réellement le quotidien des utilisateurs.
+          </p>
+          <div class="about-buttons">
+            <a href="#" class="icon"
+              ><img src="/assets/github.png" alt="icone github"
+            /></a>
+            <a href="#" class="icon"
+              ><img src="/assets/whatsapp.png" alt="icone whatsapp"
+            /></a>
+            <a href="#" class="icon"
+              ><img src="/assets/icon-fcb2.png" alt="icone facebook"
+            /></a>
+            <a href="#" class="icon"
+              ><img src="/assets/instagram.png" alt="icone instagram"
+            /></a>
+            <a href="#" class="icon"
+              ><img src="/assets/linkedin.png" alt="icone linkedin"
+            /></a>
+            <a href="#" class="icon"
+              ><img src="/assets/icon-x.png" alt="icone Twitter"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Debut section projets -->
+    <section class="portfolio" id="portfolio">
+      <div class="portfolio-container">
+        <!-- Titre de section -->
+        <h2 class="portfolio-title">PORTFOLIO</h2>
+
+        <!-- Barre de filtres -->
+        <nav class="portfolio-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="mobile">Mobile App</button>
+          <button class="filter-btn" data-filter="web">Web Design</button>
+          <button class="filter-btn" data-filter="ui">UI/UX</button>
+          <button class="filter-btn" data-filter="backend">Backend</button>
+        </nav>
+
+        <!-- Grille de projets -->
+        <div class="projects-grid">
+          <!-- Projet 1 -->
+          <article class="project-card" data-category="web">
+            <div class="project-info">
+              <h3 class="project-name">Portfolio de la Structure E-dimentec</h3>
+              <p class="project-description">
+                Il s'agit d'un site vitrine de la structure E-dimentec mettant en avant sa Direction, son équipe et ses serives.
+              </p>
+              <a href="https://edimentec.netlify.app/" target="_blank" class="project-link">Voir Projet →</a>
+            </div>
+            <figure class="project-image">
+              <img
+                src="./assets/logo_ed.jpeg"
+                alt="Logo e-dimentec"
+              />
+            </figure>
+          </article>
+
+          <!-- Projet 2 (layout inversé) -->
+          <article class="project-card reverse" data-category="ui">
+            <figure class="project-image">
+              <img
+                src="./assets/arst.png"
+                alt="E-commerce Dashboard preview"
+              />
+            </figure>
+            <div class="project-info">
+              <h3 class="project-name">MAQUETTE SITE WEB</h3>
+              <p class="project-description">
+                Proposition de maquette de site web pour l'Agence de Régulation du Secteur des Transports du Niger. Il s'agit d'un concours de proposition de projet dont j'ai assuré la partie Design UX/UI
+              </p>
+              <a href="https://www.figma.com/proto/d6PvRfjtxQeKCYbL8iCzGQ/Proj_Niger?node-id=2-1572&t=atkUMXUotOgzls6Q-1" target="_blank" class="project-link">Voir Projet →</a>
+            </div>
+          </article>
+
+          <!-- Projet 3 -->
+          <article class="project-card" data-category="mobile">
+            <div class="project-info">
+              <h3 class="project-name">FLYEST WAY APP</h3>
+              <p class="project-description">
+                Application de recherche de vols et reservation de billets. Il s'agit d'un système de proposition de voyage avec moyen d'achat de billets en ligne.
+              </p>
+              <a href="https://www.figma.com/proto/4arkB4N3ASA3RVROUdxftp/Flyestway?node-id=0-1&t=mMPMR45HAsG3NTxw-1"  target="_blank" class="project-link">Voir Projet →</a>
+            </div>
+            <figure class="project-image">
+              <img
+                src="./assets/flyestway.png"
+                alt="Flyestway App"
+              />
+            </figure>
+          </article>
+
+          <!-- Projet 4 (layout inversé) -->
+          <article class="project-card reverse" data-category="backend">
+            <figure class="project-image">
+              <img
+                src="./assets/api.png"
+                alt="API Management System preview"
+              />
+            </figure>
+            <div class="project-info">
+              <h3 class="project-name">Système de gestion des API</h3>
+              <p class="project-description">
+                Passerelle API RESTful avec limitation de débit, authentification et surveillance pour une architecture de microservices.
+              </p>
+              <a href="#" class="project-link">Voir Projet →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Debut de la section Parcours -->
+
+    <section class="journey" id="parcours">
+      <div class="journey-container">
+        <h2 class="journey-title">MON PARCOURS</h2>
+        <p class="journey-subtitle">
+          De l'apprentissage des fondamentaux à la maîtrise de stacks modernes,
+          un voyage marqué par la progression constante et la passion du code.
+        </p>
+
+        <div class="timeline">
+          <!-- Card 1 : Formation -->
+          <article class="timeline-card" data-category="education">
+            <div class="card-icon">🎓</div>
+            <div class="card-content">
+              <span class="card-badge">Formation</span>
+              <h3 class="card-title">BTS Développement d'Applications</h3>
+              <p class="card-period">2022 - 2024</p>
+              <p class="card-description">
+                Diplôme en développement web et mobile, complété par un stage
+                pratique où j'ai transformé des besoins réels en solutions
+                fonctionnelles. Fondations solides en algorithmique, conception
+                UML et gestion de projet.
+              </p>
+              <ul class="card-highlights">
+                <li>Stage de 3 mois en entreprise</li>
+                <li>Projet de soutenance : Mini-LMS complet</li>
+                <li>Mention Bien</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 2 : Évolution technique -->
+          <article class="timeline-card" data-category="skills">
+            <div class="card-icon">⚡</div>
+            <div class="card-content">
+              <span class="card-badge">Stack Technique</span>
+              <h3 class="card-title">
+                Évolution vers des technologies modernes
+              </h3>
+              <p class="card-period">2022 - Présent</p>
+              <p class="card-description">
+                Progression naturelle des langages fondamentaux (Java, C++,
+                Pascal, PHP) vers un écosystème moderne et performant.
+                Aujourd'hui spécialisé sur React.js pour des interfaces
+                dynamiques et Django Python pour des backends robustes.
+              </p>
+              <div class="tech-evolution">
+                <div class="tech-phase">
+                  <span class="phase-label">Fondations</span>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">Pascal</span>
+                    <span class="tech-tag">PHP</span>
+                  </div>
+                </div>
+                <div class="tech-arrow">→</div>
+                <div class="tech-phase">
+                  <span class="phase-label">Stack actuelle</span>
+                  <div class="tech-tags">
+                    <span class="tech-tag active">React.js</span>
+                    <span class="tech-tag active">Django</span>
+                    <span class="tech-tag active">Python</span>
+                    <span class="tech-tag active">PostgreSQL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 : Expérience professionnelle -->
+          <article class="timeline-card" data-category="experience">
+            <div class="card-icon">💼</div>
+            <div class="card-content">
+              <span class="card-badge">Expérience</span>
+              <h3 class="card-title">Projets en entreprise & freelance</h3>
+              <p class="card-period">2024 - Présent</p>
+              <p class="card-description">
+                Collaboration sur des projets concrets nécessitant rigueur et
+                autonomie : développement d'outils internes pour optimiser les
+                workflows, conception de systèmes backend scalables et mise en
+                place d'automatisations.
+              </p>
+              <ul class="card-highlights">
+                <li>Création d'outils internes de gestion</li>
+                <li>Optimisation de processus métier</li>
+                <li>Automatisation de tâches récurrentes</li>
+                <li>Conception d'architectures système</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 4 : Projet phare -->
+          <article class="timeline-card" data-category="project">
+            <div class="card-icon">🚀</div>
+            <div class="card-content">
+              <span class="card-badge">Projet Majeur</span>
+              <h3 class="card-title">Mini-LMS (Learning Management System)</h3>
+              <p class="card-period">Projet de soutenance - 2024</p>
+              <p class="card-description">
+                Plateforme complète de gestion d'apprentissage développée de A à
+                Z : gestion des cours, suivi des étudiants, système de notation,
+                tableau de bord analytique. Stack moderne avec authentification
+                sécurisée et interface responsive.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 5 : Philosophie -->
+          <article class="timeline-card" data-category="mindset">
+            <div class="card-icon">🎯</div>
+            <div class="card-content">
+              <span class="card-badge">Approche</span>
+              <h3 class="card-title">Méthode & Philosophie</h3>
+              <p class="card-description">
+                Mon processus se résume en 4 phases :
+                <strong>Analyser</strong> les besoins,
+                <strong>Structurer</strong> l'architecture,
+                <strong>Concevoir</strong> avec élégance et
+                <strong>Livrer</strong> avec qualité. Chaque projet est une
+                opportunité d'apprendre, d'affiner ma maîtrise technique et de
+                créer des applications utiles et bien pensées.
+              </p>
+              <div class="methodology">
+                <div class="method-step">
+                  <span class="step-number">1</span>
+                  <span class="step-name">Analyser</span>
+                </div>
+                <div class="method-step">
+                  <span class="step-number">2</span>
+                  <span class="step-name">Structurer</span>
+                </div>
+                <div class="method-step">
+                  <span class="step-number">3</span>
+                  <span class="step-name">Concevoir</span>
+                </div>
+                <div class="method-step">
+                  <span class="step-number">4</span>
+                  <span class="step-name">Livrer</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="journey-cta">
+          <a href="/assets/cv.pdf" target="_blank" class="btn-download" download>
+            📄 Télécharger mon CV complet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEUT SECTION CONTACT -->
+
+    <section class="contact" id="contact">
+      <div class="contact-container">
+        <!-- Titre de section -->
+        <h2 class="contact-title">CONTACT</h2>
+        <p class="contact-subtitle">
+          Une question ? Un projet en tête ? N'hésitez pas à me contacter, je
+          réponds généralement sous 24h.
+        </p>
+
+        <div class="contact-content">
+          <!-- Formulaire de contact -->
+          <div class="contact-form-wrapper">
+            <h3 class="form-heading">Envoyez-moi un Message</h3>
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <label for="name">Nom complet</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="John Doe"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="john@example.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Parlez-moi de votre projet..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                Send Message
+                <span class="btn-icon">→</span>
+              </button>
+
+              <div class="form-status" id="formStatus"></div>
+            </form>
+          </div>
+
+          <!-- Informations de contact -->
+          <div class="contact-info-wrapper">
+            <h3 class="info-heading">Entrez en Contact</h3>
+
+            <div class="contact-info-list">
+              <div class="info-item">
+                <img src="./assets/mail.png" class="info-icon" alt="Mailbox" />
+                <div class="info-content">
+                  <span class="info-label">Email</span>
+                  <a href="mailto:votre.email@example.com" class="info-value">
+                    votre.email@example.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <img src="./assets/tel.png" class="info-icon" />
+                <div class="info-content">
+                  <span class="info-label">Téléphone</span>
+                  <a href="tel:+22890123456" class="info-value">
+                    +228 90 12 34 56
+                  </a>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-content">
+                  <span class="info-label">Localisation</span>
+                  <span class="info-value">Lomé, Togo</span>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">⏰</div>
+                <div class="info-content">
+                  <span class="info-label">Disponibilité</span>
+                  <span class="info-value">Lun - Ven, 9h - 18h GMT</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini carte ou illustration (optionnel) -->
+            <div class="contact-visual">
+              <img
+                src="/assets/contact-illustration.svg"
+                alt="Carte de Visite"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <!-- Logo / Nom -->
+          <div class="footer-brand">
+            <span class="footer-logo">elnomanu13</span>
+            <p class="footer-tagline">
+              Développeur Full Stack passionné par la création d'expériences web
+              modernes.
+            </p>
+          </div>
+
+          <!-- Liens réseaux sociaux -->
+          <div class="footer-socials">
+            <a
+              href="https://github.com/elnomanu13"
+              class="social-link"
+              aria-label="GitHub"
+              target="_blank"
+            >
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="#"
+              class="social-link"
+              aria-label="LinkedIn"
+              target="_blank"
+            >
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="https://twitter.com/elnomanu13"
+              class="social-link"
+              aria-label="Twitter"
+              target="_blank"
+            >
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom">
+          <p class="copyright">
+            © 2025 <strong>Komivi Emmanuel Nono KOWOUVI</strong>. Tous droits réservés.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+
+
+    <script src="/scripts/script.js"></script>
+  </body>
+</html>
