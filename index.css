@@ -337,6 +337,62 @@ html.js body.menu-open .nav-panel {
   margin-top: 1.6rem;
 }
 
+.hero-note {
+  max-width: 46rem;
+  margin: 1.2rem 0 0;
+  color: var(--text-muted);
+}
+
+.hero-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+
+.hero-services span {
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.freelance-strip {
+  display: grid;
+  gap: 1.1rem;
+  padding: 1.2rem;
+}
+
+.freelance-strip h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  line-height: 1.08;
+}
+
+.freelance-strip p:last-child {
+  margin: 0.9rem 0 0;
+  color: var(--text-muted);
+}
+
+.freelance-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.freelance-items span {
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(87, 193, 178, 0.22);
+  font-weight: 700;
+}
+
 
 
 .hero-sidebar {
@@ -519,7 +575,8 @@ html.js body.menu-open .nav-panel {
 
 .skills-grid,
 .journey-grid,
-.contact-list {
+.contact-list,
+.process-grid {
   display: grid;
   gap: 1rem;
 }
@@ -527,6 +584,7 @@ html.js body.menu-open .nav-panel {
 .skill-card h3,
 .project-card h3,
 .journey-card h3,
+.process-card h3,
 .contact-form-shell h3 {
   margin: 0 0 0.6rem;
   font-family: "Space Grotesk", sans-serif;
@@ -536,6 +594,7 @@ html.js body.menu-open .nav-panel {
 .skill-card p,
 .project-card p,
 .journey-card p,
+.process-card p,
 .contact-item p {
   margin: 0;
   color: var(--text-muted);
@@ -691,6 +750,24 @@ html.js body.menu-open .nav-panel {
   gap: 1rem;
 }
 
+.projects-group + .projects-group {
+  margin-top: 2.5rem;
+}
+
+.projects-group-head {
+  margin-bottom: 1rem;
+}
+
+.projects-subtitle {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.45rem;
+}
+
+.projects-grid-primary {
+  gap: 1.4rem;
+}
+
 .project-card {
   display: grid;
   gap: 1.15rem;
@@ -747,6 +824,42 @@ html.js body.menu-open .nav-panel {
   color: var(--text-muted);
 }
 
+.project-points strong {
+  color: var(--text);
+}
+
+.project-summary {
+  max-width: 44rem;
+}
+
+.project-meta-grid {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.project-meta-card {
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.project-meta-card span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--text-soft);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-meta-card p {
+  margin: 0;
+}
+
 .project-actions {
   margin-top: 1rem;
 }
@@ -784,6 +897,24 @@ html.js body.menu-open .nav-panel {
 
 .journey-cta {
   margin-top: 1.75rem;
+}
+
+.process-card {
+  padding: 1.2rem;
+}
+
+.process-number {
+  display: inline-grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-bottom: 0.9rem;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1px solid rgba(87, 193, 178, 0.22);
+  color: var(--accent);
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
 }
 
 .contact-copy {
@@ -906,6 +1037,11 @@ html.js .reveal.is-visible {
     padding: 5.5rem 0;
   }
 
+  .freelance-strip,
+  .project-meta-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero-actions {
     flex-direction: row;
     flex-wrap: wrap;
@@ -915,7 +1051,8 @@ html.js .reveal.is-visible {
   .skills-grid,
   .journey-grid,
   .contact-list,
-  .about-stats {
+  .about-stats,
+  .process-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

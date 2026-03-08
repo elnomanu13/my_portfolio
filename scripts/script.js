@@ -49,6 +49,7 @@ if (navToggle) {
 
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
+const projectGroups = document.querySelectorAll("[data-project-group]");
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -60,6 +61,11 @@ filterButtons.forEach((button) => {
     projectCards.forEach((card) => {
       const match = filter === "all" || card.dataset.category === filter;
       card.hidden = !match;
+    });
+
+    projectGroups.forEach((group) => {
+      const visibleCards = group.querySelectorAll(".project-card:not([hidden])");
+      group.hidden = visibleCards.length === 0;
     });
   });
 });
