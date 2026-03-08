@@ -50,6 +50,47 @@ if (navToggle) {
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
 const projectGroups = document.querySelectorAll("[data-project-group]");
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const finePointerQuery = window.matchMedia("(pointer: fine)");
+
+function setRevealDelay(elements, step) {
+  elements.forEach((element, index) => {
+    element.style.setProperty("--reveal-delay", `${index * step}ms`);
+  });
+}
+
+setRevealDelay(document.querySelectorAll(".section-heading.reveal"), 70);
+setRevealDelay(document.querySelectorAll(".projects-group .project-card"), 90);
+setRevealDelay(document.querySelectorAll(".skill-card"), 80);
+setRevealDelay(document.querySelectorAll(".process-card"), 90);
+setRevealDelay(document.querySelectorAll(".journey-card"), 90);
+setRevealDelay(document.querySelectorAll(".contact-item"), 70);
+
+const heroTitle = document.querySelector(".hero-copy h1");
+
+if (heroTitle && !reducedMotionQuery.matches) {
+  const titleText = heroTitle.textContent.trim();
+  heroTitle.setAttribute("aria-label", titleText);
+  heroTitle.textContent = "";
+  const words = titleText.split(/\s+/);
+  let charIndex = 0;
+
+  words.forEach((word) => {
+    const wordSpan = document.createElement("span");
+    wordSpan.className = "hero-word";
+
+    [...word].forEach((character) => {
+      const charSpan = document.createElement("span");
+      charSpan.className = "hero-char";
+      charSpan.style.setProperty("--char-index", charIndex);
+      charSpan.textContent = character;
+      wordSpan.appendChild(charSpan);
+      charIndex += 1;
+    });
+
+    heroTitle.appendChild(wordSpan);
+  });
+}
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -69,6 +110,140 @@ filterButtons.forEach((button) => {
     });
   });
 });
+
+const bubbleWall = document.querySelector(".logo-wall");
+const bubbleItems = bubbleWall ? [...bubbleWall.querySelectorAll(".logo-item")] : [];
+const bubblePointer = { active: false, x: 0, y: 0 };
+let bubbleAnimationFrame = 0;
+let bubbleState = [];
+
+function resetBubbleStyles() {
+  if (!bubbleWall) {
+    return;
+  }
+
+  bubbleWall.classList.remove("bubble-field");
+  bubbleWall.style.removeProperty("--bubble-height");
+
+  bubbleItems.forEach((item) => {
+    item.style.removeProperty("width");
+    item.style.removeProperty("height");
+    item.style.removeProperty("transform");
+    item.style.removeProperty("--bubble-size");
+  });
+}
+
+function createBubbleState(width, height) {
+  const columns = Math.min(3, bubbleItems.length);
+  const rows = Math.ceil(bubbleItems.length / columns);
+
+  return bubbleItems.map((item, index) => {
+    const size = Math.max(74, Math.min(116, width / 7.4 + (index % 3) * 6));
+    const column = index % columns;
+    const row = Math.floor(index / columns);
+    const x = ((width - size) / Math.max(1, columns - 1)) * column + (Math.random() * 18 - 9);
+    const y = ((height - size) / Math.max(1, rows - 1)) * row + (Math.random() * 24 - 12);
+
+    item.style.width = `${size}px`;
+    item.style.height = `${size}px`;
+    item.style.setProperty("--bubble-size", `${size}px`);
+
+    return {
+      item,
+      size,
+      x: Math.max(0, Math.min(width - size, x)),
+      y: Math.max(0, Math.min(height - size, y)),
+      vx: (Math.random() - 0.5) * 0.42,
+      vy: (Math.random() - 0.5) * 0.38,
+      wobble: Math.random() * Math.PI * 2,
+    };
+  });
+}
+
+function animateBubbles() {
+  if (!bubbleWall || !bubbleWall.classList.contains("bubble-field")) {
+    return;
+  }
+
+  const width = bubbleWall.clientWidth;
+  const height = bubbleWall.clientHeight;
+
+  bubbleState.forEach((bubble) => {
+    bubble.wobble += 0.018;
+    bubble.x += bubble.vx + Math.sin(bubble.wobble) * 0.1;
+    bubble.y += bubble.vy + Math.cos(bubble.wobble * 1.2) * 0.08;
+
+    if (bubblePointer.active) {
+      const centerX = bubble.x + bubble.size / 2;
+      const centerY = bubble.y + bubble.size / 2;
+      const dx = centerX - bubblePointer.x;
+      const dy = centerY - bubblePointer.y;
+      const distance = Math.hypot(dx, dy) || 1;
+
+      if (distance < 120) {
+        const force = (120 - distance) / 120;
+        bubble.vx += (dx / distance) * force * 0.2;
+        bubble.vy += (dy / distance) * force * 0.2;
+      }
+    }
+
+    bubble.vx *= 0.995;
+    bubble.vy *= 0.995;
+
+    if (bubble.x <= 0 || bubble.x >= width - bubble.size) {
+      bubble.vx *= -1;
+      bubble.x = Math.max(0, Math.min(width - bubble.size, bubble.x));
+    }
+
+    if (bubble.y <= 0 || bubble.y >= height - bubble.size) {
+      bubble.vy *= -1;
+      bubble.y = Math.max(0, Math.min(height - bubble.size, bubble.y));
+    }
+
+    bubble.item.style.transform = `translate3d(${bubble.x}px, ${bubble.y}px, 0)`;
+  });
+
+  bubbleAnimationFrame = window.requestAnimationFrame(animateBubbles);
+}
+
+function initBubbleField() {
+  if (!bubbleWall) {
+    return;
+  }
+
+  window.cancelAnimationFrame(bubbleAnimationFrame);
+
+  if (
+    reducedMotionQuery.matches ||
+    !finePointerQuery.matches ||
+    window.innerWidth < 700
+  ) {
+    resetBubbleStyles();
+    return;
+  }
+
+  bubbleWall.classList.add("bubble-field");
+  const height = Math.max(320, Math.min(420, bubbleWall.clientWidth * 0.54));
+  bubbleWall.style.setProperty("--bubble-height", `${height}px`);
+  bubbleState = createBubbleState(bubbleWall.clientWidth, height);
+  animateBubbles();
+}
+
+if (bubbleWall) {
+  bubbleWall.addEventListener("mousemove", (event) => {
+    const rect = bubbleWall.getBoundingClientRect();
+    bubblePointer.active = true;
+    bubblePointer.x = event.clientX - rect.left;
+    bubblePointer.y = event.clientY - rect.top;
+  });
+
+  bubbleWall.addEventListener("mouseleave", () => {
+    bubblePointer.active = false;
+  });
+
+  window.addEventListener("resize", initBubbleField);
+  initBubbleField();
+}
 
 const audio = document.getElementById("music");
 const playButton = document.getElementById("playBtn");
