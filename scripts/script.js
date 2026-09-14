@@ -1,7 +1,8 @@
 const body = document.body;
 
 const navToggle = document.querySelector(".nav-toggle");
-const navLinks = document.querySelectorAll(".nav-menu a");
+const navToggleIcon = document.querySelector(".nav-toggle-icon");
+const navLinks = document.querySelectorAll(".nav-menu a, .nav-panel a");
 const siteNav = document.querySelector(".site-nav");
 
 function closeMenu() {
@@ -9,7 +10,10 @@ function closeMenu() {
 
   if (navToggle) {
     navToggle.setAttribute("aria-expanded", "false");
-    navToggle.textContent = "Menu";
+  }
+  if (navToggleIcon) {
+    navToggleIcon.setAttribute("data-lucide", "menu");
+    lucide.createIcons({ nodes: [navToggleIcon] });
   }
 }
 
@@ -17,7 +21,10 @@ if (navToggle) {
   navToggle.addEventListener("click", () => {
     const isOpen = body.classList.toggle("menu-open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
-    navToggle.textContent = isOpen ? "Fermer" : "Menu";
+    if (navToggleIcon) {
+      navToggleIcon.setAttribute("data-lucide", isOpen ? "x" : "menu");
+      lucide.createIcons({ nodes: [navToggleIcon] });
+    }
   });
 
   navLinks.forEach((link) => {
@@ -25,7 +32,7 @@ if (navToggle) {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth >= 960) {
+    if (window.innerWidth >= 768) {
       closeMenu();
     }
   });
@@ -96,8 +103,12 @@ filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
 
-    filterButtons.forEach((item) => item.classList.remove("is-active"));
-    button.classList.add("is-active");
+    filterButtons.forEach((item) => {
+      item.classList.remove("is-active", "bg-primary", "text-on-primary");
+      item.classList.add("text-on-surface-variant");
+    });
+    button.classList.add("is-active", "bg-primary", "text-on-primary");
+    button.classList.remove("text-on-surface-variant");
 
     projectCards.forEach((card) => {
       const match = filter === "all" || card.dataset.category === filter;
@@ -111,139 +122,8 @@ filterButtons.forEach((button) => {
   });
 });
 
-const bubbleWall = document.querySelector(".logo-wall");
-const bubbleItems = bubbleWall ? [...bubbleWall.querySelectorAll(".logo-item")] : [];
-const bubblePointer = { active: false, x: 0, y: 0 };
-let bubbleAnimationFrame = 0;
-let bubbleState = [];
+// Logo Wall Marquee - Pure CSS smooth scrolling with mouse pause support
 
-function resetBubbleStyles() {
-  if (!bubbleWall) {
-    return;
-  }
-
-  bubbleWall.classList.remove("bubble-field");
-  bubbleWall.style.removeProperty("--bubble-height");
-
-  bubbleItems.forEach((item) => {
-    item.style.removeProperty("width");
-    item.style.removeProperty("height");
-    item.style.removeProperty("transform");
-    item.style.removeProperty("--bubble-size");
-  });
-}
-
-function createBubbleState(width, height) {
-  const columns = Math.min(3, bubbleItems.length);
-  const rows = Math.ceil(bubbleItems.length / columns);
-
-  return bubbleItems.map((item, index) => {
-    const size = Math.max(74, Math.min(116, width / 7.4 + (index % 3) * 6));
-    const column = index % columns;
-    const row = Math.floor(index / columns);
-    const x = ((width - size) / Math.max(1, columns - 1)) * column + (Math.random() * 18 - 9);
-    const y = ((height - size) / Math.max(1, rows - 1)) * row + (Math.random() * 24 - 12);
-
-    item.style.width = `${size}px`;
-    item.style.height = `${size}px`;
-    item.style.setProperty("--bubble-size", `${size}px`);
-
-    return {
-      item,
-      size,
-      x: Math.max(0, Math.min(width - size, x)),
-      y: Math.max(0, Math.min(height - size, y)),
-      vx: (Math.random() - 0.5) * 0.42,
-      vy: (Math.random() - 0.5) * 0.38,
-      wobble: Math.random() * Math.PI * 2,
-    };
-  });
-}
-
-function animateBubbles() {
-  if (!bubbleWall || !bubbleWall.classList.contains("bubble-field")) {
-    return;
-  }
-
-  const width = bubbleWall.clientWidth;
-  const height = bubbleWall.clientHeight;
-
-  bubbleState.forEach((bubble) => {
-    bubble.wobble += 0.018;
-    bubble.x += bubble.vx + Math.sin(bubble.wobble) * 0.1;
-    bubble.y += bubble.vy + Math.cos(bubble.wobble * 1.2) * 0.08;
-
-    if (bubblePointer.active) {
-      const centerX = bubble.x + bubble.size / 2;
-      const centerY = bubble.y + bubble.size / 2;
-      const dx = centerX - bubblePointer.x;
-      const dy = centerY - bubblePointer.y;
-      const distance = Math.hypot(dx, dy) || 1;
-
-      if (distance < 120) {
-        const force = (120 - distance) / 120;
-        bubble.vx += (dx / distance) * force * 0.2;
-        bubble.vy += (dy / distance) * force * 0.2;
-      }
-    }
-
-    bubble.vx *= 0.995;
-    bubble.vy *= 0.995;
-
-    if (bubble.x <= 0 || bubble.x >= width - bubble.size) {
-      bubble.vx *= -1;
-      bubble.x = Math.max(0, Math.min(width - bubble.size, bubble.x));
-    }
-
-    if (bubble.y <= 0 || bubble.y >= height - bubble.size) {
-      bubble.vy *= -1;
-      bubble.y = Math.max(0, Math.min(height - bubble.size, bubble.y));
-    }
-
-    bubble.item.style.transform = `translate3d(${bubble.x}px, ${bubble.y}px, 0)`;
-  });
-
-  bubbleAnimationFrame = window.requestAnimationFrame(animateBubbles);
-}
-
-function initBubbleField() {
-  if (!bubbleWall) {
-    return;
-  }
-
-  window.cancelAnimationFrame(bubbleAnimationFrame);
-
-  if (
-    reducedMotionQuery.matches ||
-    !finePointerQuery.matches ||
-    window.innerWidth < 700
-  ) {
-    resetBubbleStyles();
-    return;
-  }
-
-  bubbleWall.classList.add("bubble-field");
-  const height = Math.max(320, Math.min(420, bubbleWall.clientWidth * 0.54));
-  bubbleWall.style.setProperty("--bubble-height", `${height}px`);
-  bubbleState = createBubbleState(bubbleWall.clientWidth, height);
-  animateBubbles();
-}
-
-if (bubbleWall) {
-  bubbleWall.addEventListener("mousemove", (event) => {
-    const rect = bubbleWall.getBoundingClientRect();
-    bubblePointer.active = true;
-    bubblePointer.x = event.clientX - rect.left;
-    bubblePointer.y = event.clientY - rect.top;
-  });
-
-  bubbleWall.addEventListener("mouseleave", () => {
-    bubblePointer.active = false;
-  });
-
-  window.addEventListener("resize", initBubbleField);
-  initBubbleField();
-}
 
 const audio = document.getElementById("music");
 const playButton = document.getElementById("playBtn");
@@ -375,3 +255,9 @@ if (contactForm && formStatus) {
     window.location.href = `mailto:emmanuelnonokowouvi@outlook.fr?subject=${subject}&body=${bodyContent}`;
   });
 }
+
+// Initialize Lucide icons
+if (typeof lucide !== "undefined") {
+  lucide.createIcons();
+}
+
